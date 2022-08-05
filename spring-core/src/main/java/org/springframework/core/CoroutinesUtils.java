@@ -65,10 +65,13 @@ public abstract class CoroutinesUtils {
 				(scope, continuation) -> MonoKt.awaitSingleOrNull(source, continuation));
 	}
 
+	// 在变异的时候这里报错: 警告: [deprecation] AccessibleObject中的isAccessible()已过时
+	// 处理方法: 在当前方法上添加注解: @SuppressWarnings("deprecation")
 	/**
 	 * Invoke a suspending function and converts it to {@link Mono} or
 	 * {@link Flux}.
 	 */
+	@SuppressWarnings("deprecation")
 	public static Publisher<?> invokeSuspendingFunction(Method method, Object target, Object... args) {
 		KFunction<?> function = Objects.requireNonNull(ReflectJvmMapping.getKotlinFunction(method));
 		if (method.isAccessible() && !KCallablesJvm.isAccessible(function)) {
