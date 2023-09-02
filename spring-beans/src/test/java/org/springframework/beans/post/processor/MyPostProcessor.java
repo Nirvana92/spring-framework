@@ -23,4 +23,11 @@ public class MyPostProcessor implements SmartInstantiationAwareBeanPostProcessor
 		}
 		return SmartInstantiationAwareBeanPostProcessor.super.postProcessAfterInstantiation(bean, beanName);
 	}
+
+	@Override
+	public PropertyValues postProcessProperties(PropertyValues pvs, Object bean, String beanName) throws BeansException {
+		System.out.println("===== pvs: " + pvs + ", bean: " + bean + ", beanName: " + beanName);
+
+		return SmartInstantiationAwareBeanPostProcessor.super.postProcessProperties(pvs, bean, beanName);
+	}
 }

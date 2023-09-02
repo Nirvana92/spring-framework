@@ -398,6 +398,14 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 		return adaptBeanInstance(name, beanInstance, requiredType);
 	}
 
+	/**
+	 * 如果 bean 实例的类型与要创建的类型不匹配,则尝试转换为指定类型的 bean 实例。
+	 * @param name getBean 的name
+	 * @param bean 具体的bean 对象
+	 * @param requiredType getBean 参数中的需要的类型
+	 * @return 返回容器中的name 对象
+	 * @param <T>
+	 */
 	@SuppressWarnings("unchecked")
 	<T> T adaptBeanInstance(String name, Object bean, @Nullable Class<?> requiredType) {
 		// Check if required type matches the type of the actual bean instance.

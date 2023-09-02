@@ -22,11 +22,13 @@ public class BeanFactoryTest {
 		new XmlBeanDefinitionReader(factory).loadBeanDefinitions(path);
 		factory.addBeanPostProcessor(new MyPostProcessor());
 
-		Father father = (Father) factory.getBean("father");
-		System.out.println("father: " + father.getName());
+		Father f = factory.getBean("father", Father.class);
 
-
-		Children children = (Children) factory.getBean("children");
-		System.out.println("children: " + children.getFather().getName());
+//		Father father = (Father) factory.getBean("father");
+//		System.out.println("father: " + father.getName());
+//
+//
+//		Children children = (Children) factory.getBean("children");
+//		System.out.println("children: " + children.getFather().getName());
 	}
 }
